@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <style></style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Shrinker</h1>
+
+      <div class="row">
+        <form action="/shrink" method="POST" class="col s12">
+          <input placeholder="URL" type="url" name="fullUrl" id="fullUrl" />
+          <button
+            type="submit"
+            class="col s2 btn waves-effect waves-light blue lighten-2"
+          >
+            Shrink
+          </button>
+        </form>
+      </div>
+
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <td>Full URL</td>
+            <td>Short URL</td>
+            <td>Clicks</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach(url => { %>
+          <tr>
+            <td><a href="<%=url.full%>"><%=url.full%></a></td>
+            <td><a href="<%=url.short%>"><%=url.short%></a></td>
+            <td><%=url.clicks%></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
